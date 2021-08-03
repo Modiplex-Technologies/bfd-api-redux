@@ -1,0 +1,26 @@
+{
+  "name": "bfd-api-redux",
+  "version": "1.0.4",
+  "description": "A node.js wrapper for the Bots For Discord API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KubLuk24/bfd-api.git"
+  },
+  "keywords": [
+    "bfd"
+  ],
+  "author": "kub_luk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KubLuk24/bfd-api/issues"
+  },
+  "homepage": "https://github.com/KubLuk24/bfd-api#readme",
+  "dependencies": {
+    "events": "^3.3.0",
+    "https": "^1.0.0"
+  }
+}
