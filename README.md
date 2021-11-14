@@ -1,6 +1,6 @@
-## NOTICE
+## NOTICE & INFO
 
-bfd-api-redux is a community made API wrapper for the BotsForDiscord API and is not official. If you find any issues with this module, please DO NOT report them to the developer team of BFD but to me directly `Kub_Luk#0926`
+`bfd-api-redux` is an official bot-page API wrapper for [Discords.com](https://discords.com) (formerly botsfordiscord.com). Please direct all inqueries and support requests to [our support server.](https://discord.gg/dsl)
 
 ## Usage
 
@@ -11,7 +11,7 @@ var api = new bfd('BFD_Token', 'botID');
 ```
 **NOTE:** *Everything has to be used inside async functions with an `await`, for example:*
 ```js
-asnyc function user() {
+async function user() {
     console.log(await api.getUser('254287885585350666'));
 }
 user();
@@ -31,3 +31,22 @@ You can easily update your Bot's guild count using this function:
 let serverCount = client.guilds.cache.size; 
 api.setServers(serverCount)
 ```
+
+## Examples
+
+### Get votes
+With callback
+```js
+api.getVotes().then(votes => {
+    console.log(votes)
+})
+```
+
+Without callback
+```js
+async function votes() {
+    console.log(await api.getVotes());
+}
+votes();
+```
+

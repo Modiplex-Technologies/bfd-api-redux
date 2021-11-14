@@ -47,8 +47,8 @@ class bfd extends EventEmitter {
     async getVotes(id = this._id, token = this._token) {
         return new Promise((resolve, reject) => {
             https.get({
-                hostname: 'botsfordiscord.com',
-                path: `/api/bot/${id}/votes`,
+                hostname: 'discords.com',
+                path: `/bots/api/bot/${id}/votes`,
                 headers: {
                     Authorization: token,
                     "Content-Type": "application/json"
