@@ -83,9 +83,9 @@ class bfd extends EventEmitter {
             })
 
             const options = {
-                hostname: 'botsfordiscord.com',
+                hostname: 'discords.com',
                 port: 443,
-                path: `/api/bot/${id}`,
+                path: `/bots/api/bot/${id}`,
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

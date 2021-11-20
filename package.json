@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KubLuk24/bfd-api.git"
+    "url": "git+https://github.com/KubLuk24/bfd-api-redux.git"
   },
   "keywords": [
     "bfd"
