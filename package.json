@@ -16,9 +16,9 @@
   "author": "kub_luk",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/KubLuk24/bfd-api/issues"
+    "url": "https://github.com/KubLuk24/bfd-api-redux/issues"
   },
-  "homepage": "https://github.com/KubLuk24/bfd-api#readme",
+  "homepage": "https://github.com/KubLuk24/bfd-api-redux#readme",
   "dependencies": {
     "events": "^3.3.0",
     "https": "^1.0.0"
