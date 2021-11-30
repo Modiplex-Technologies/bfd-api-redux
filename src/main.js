@@ -108,6 +108,39 @@ class bfd extends EventEmitter {
             req.end()
         })
     }
+
+    async updateCard(enabled, content, id = this._id, token = this._token) {
+        return new Promise((resolve, reject) => {
+            const data = JSON.stringify({
+                enabled: enabled,
+                content: content
+            })
+
+            const options = {
+                hostname: 'discords.com',
+                port: 443,
+                path: `/bots/api/bot/${id}/card`,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authorization': token
+                }
+            }
+
+            const req = https.request(options, res => {
+                res.on('data', d => {
+                    resolve(JSON.parse(d.toString("utf-8")));
+                })
+            })
+
+            req.on('error', error => {
+                reject(error)
+            })
+
+            req.write(data)
+            req.end()
+        })
+    }
 }
 
 module.exports = bfd;
