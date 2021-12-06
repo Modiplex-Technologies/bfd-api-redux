@@ -64,6 +64,26 @@ class bfd extends EventEmitter {
         })
     }
 
+    async getVotes12(id = this._id, token = this._token) {
+        return new Promise((resolve, reject) => {
+            https.get({
+                hostname: 'discords.com',
+                path: `/bots/api/bot/${id}/votes12h`,
+                headers: {
+                    Authorization: token,
+                    "Content-Type": "application/json"
+                },
+                parse: "json"
+            }, async (res) => {
+                res.on('data', (d) => {
+                    resolve(JSON.parse(d.toString("utf-8")));
+                });
+            }).on('error', (e) => {
+                reject(e);
+            })
+        })
+    }
+
     async getWidget(id) {
         return new Promise((resolve, reject) => {
             https.get(`https://discords.com/bots/api/bot/${id}/widget`, async (res) => {
