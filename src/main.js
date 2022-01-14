@@ -46,21 +46,7 @@ class bfd extends EventEmitter {
 
     async getVotes(id = this._id, token = this._token) {
         return new Promise((resolve, reject) => {
-            https.get({
-                hostname: 'discords.com',
-                path: `/bots/api/bot/${id}/votes`,
-                headers: {
-                    Authorization: token,
-                    "Content-Type": "application/json"
-                },
-                parse: "json"
-            }, async (res) => {
-                res.on('data', (d) => {
-                    resolve(JSON.parse(d.toString("utf-8")));
-                });
-            }).on('error', (e) => {
-                reject(e);
-            })
+            reject ("This endpoint has been deprecated - please update to getVotes12()");
         })
     }
 

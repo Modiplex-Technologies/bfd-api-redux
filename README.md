@@ -9,21 +9,12 @@ Constructing a new API interface:
 var bfd = require('bfd-api-redux');
 var api = new bfd('BFD_Token', 'botID');
 ```
-**NOTE:** *Everything has to be used inside async functions with an `await`, for example:*
+**NOTE:** *If you do now wish to use callbacks, then all actions must be used inside async functions with an `await`, for example:*
 ```js
 async function user() {
     console.log(await api.getUser('254287885585350666'));
 }
 user();
-```
-All of the following functions only require `id`, which is the ID of the bot/user that is being searched and return a JSON object when done:
-```js
-api.getUser('254287885585350666') //requires user ID
-api.getUserBots('254287885585350666') //requires user ID
-api.getBot('621352902656524288') //requires bot ID
-api.getWidget('621352902656524288') //requires bot ID
-
-api.getVotes() //Automatically gets your votes, no input required
 ```
 
 You can easily update your Bot's guild count using this function:
@@ -35,18 +26,38 @@ api.setServers(serverCount)
 ## Examples
 
 ### Get votes
-With callback
 ```js
-api.getVotes().then(votes => {
+api.getVotes12().then(votes => {
     console.log(votes)
 })
 ```
 
-Without callback
+### Get user
 ```js
-async function votes() {
-    console.log(await api.getVotes());
-}
-votes();
+api.getUser("254287885585350666").then(user => {
+    console.log(user)
+})
 ```
+
+### Get user bots
+```js
+api.getUserBots("254287885585350666").then(bots => {
+    console.log(bots)
+})
+```
+
+### Get bot
+```js
+api.getUser("621352902656524288").then(bot => {
+    console.log(bot)
+})
+```
+
+### Get widget
+```js
+api.getWidget("621352902656524288").then(widget => {
+    console.log(widget)
+})
+```
+
 
