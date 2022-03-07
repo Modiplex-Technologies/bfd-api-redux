@@ -70,6 +70,34 @@ class bfd extends EventEmitter {
         })
     }
 
+    async checkVoteLight(userid) {
+        return new Promise(async (resolve, reject) => {
+            const votes = await this.getVotes12();
+            if (Array.isArray(votes.entries)) {
+                resolve(votes.entries.some(vote => vote.userid === userid))
+            } else {
+                resolve(false);
+            }
+        })
+    }
+
+    async checkVote(userid) {
+        return new Promise(async (resolve, reject) => {
+            const votes = await this.getVotes12();
+            if (Array.isArray(votes.entries)) {
+                let structure = { voted: true, votes: []};
+                votes.entries.forEach(vote => {
+                    if (vote.userid === userid) {
+                        structure.votes.push(vote)
+                    }
+                })
+                resolve(structure)
+            } else {
+                resolve(false);
+            }
+        })
+    }
+
     async getWidget(id) {
         return new Promise((resolve, reject) => {
             https.get(`https://discords.com/bots/api/bot/${id}/widget`, async (res) => {
