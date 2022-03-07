@@ -34,29 +34,43 @@ api.getVotes12().then(votes => {
 
 ### Get user
 ```js
-api.getUser("254287885585350666").then(user => {
+api.getUser("254287885585350666").then(user => { //Provide a user id
     console.log(user)
 })
 ```
 
 ### Get user bots
 ```js
-api.getUserBots("254287885585350666").then(bots => {
+api.getUserBots("254287885585350666").then(bots => { //Provide a user id
     console.log(bots)
 })
 ```
 
 ### Get bot
 ```js
-api.getUser("621352902656524288").then(bot => {
+api.getUser("621352902656524288").then(bot => { //Provide a bot id
     console.log(bot)
 })
 ```
 
 ### Get widget
 ```js
-api.getWidget("621352902656524288").then(widget => {
+api.getWidget("621352902656524288").then(widget => { //Provide a bot id
     console.log(widget)
+})
+```
+
+### Cheking a vote for one specific user (including structure)
+```js
+api.checkVote("254287885585350666").then(vote => { //Provide a user id
+    console.log(vote) //true or false + vote structure
+})
+```
+
+### Cheking a vote for one specific user (lightweight structure)
+```js
+api.checkVoteLight("254287885585350666").then(vote => { //Provide a user id
+    console.log(vote) //true or false
 })
 ```
 
