@@ -85,7 +85,7 @@ class bfd extends EventEmitter {
         return new Promise(async (resolve, reject) => {
             const votes = await this.getVotes12();
             if (Array.isArray(votes.entries)) {
-                let structure = { voted: true, votes: []};
+                let structure = { voted: votes.entries.some(vote => vote.userid === userid), votes: []};
                 votes.entries.forEach(vote => {
                     if (vote.userid === userid) {
                         structure.votes.push(vote)
