@@ -1,6 +1,6 @@
 {
   "name": "bfd-api-redux",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "A node.js wrapper for the Bots For Discord API",
   "main": "index.js",
   "scripts": {
