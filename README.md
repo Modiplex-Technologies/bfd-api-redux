@@ -2,6 +2,10 @@
 
 `bfd-api-redux` is an official bot-page API wrapper for [Discords.com](https://discords.com) (formerly botsfordiscord.com). Please direct all inqueries and support requests to [our support server.](https://discord.gg/dsl)
 
+*The current version of the Discords.com Bot API will be depracated
+upon the release of the BotsV3 runtime (website rewrite).
+Please keep in mind that any bots using a custom wrapper for the API will need to migrate, the current version if this package will also be deprecated and an update will be required.*
+
 ## Usage
 
 Constructing a new API interface:
