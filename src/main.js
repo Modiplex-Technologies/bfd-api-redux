@@ -20,10 +20,14 @@ class bfd extends EventEmitter {
                 followRedirect: true,
                 parse: "json"
             }, async (res) => {
+                let resultdata = "";
                 res.on('data', (d) => {
                     if (res.statusCode !== 200) { resolve(); throw new Error(d);}
-                    resolve(JSON.parse(d.toString("utf-8")));
+                    resultdata += d.toString();
                 });
+                res.on('end', () => {
+                    resolve(JSON.parse(resultdata));
+                })
 
             }).on('error', (e) => {
                 reject(e);
@@ -77,10 +81,13 @@ class bfd extends EventEmitter {
             }
 
             const req = https.request(options, res => {
-
+                let resultdata = "";
                 res.on('data', d => {
                     if (res.statusCode !== 200) { resolve(); throw new Error(d);}
-                    resolve(JSON.parse(d.toString("utf-8")));
+                    resultdata = d.toString("utf-8");
+                })
+                res.on('end', () => {
+                    resolve(JSON.parse(resultdata));
                 })
             })
 
