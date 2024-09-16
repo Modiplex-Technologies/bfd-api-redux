@@ -9,46 +9,82 @@
 upon the release of the BotsV3 runtime (website rewrite).
 Please keep in mind that any bots using a custom wrapper for the API will need to migrate; the current version of this package will also be deprecated and an update will be required.*
 
+
 ## Usage
 
 Constructing a new API interface:
-```js
-var bfd = require('bfd-api-redux');
-var api = new bfd('BFD_Token', 'botID');
-```
-**NOTE:** *If you do not wish to use callbacks, then all actions must be used inside async functions with an `await`, for example:*
 
-You can easily update your Bot's guild count using this function:
 ```js
-let serverCount = client.guilds.cache.size; 
-api.setServers(serverCount)
+const bfd = require('bfd-api-redux');
+const api = new bfd('BFD_Token', 'botID');
 ```
+
+**NOTE:** All methods return Promises, so you can use either `.then()` or `async/await` syntax.
 
 ## Examples
 
 ### Get votes
 ```js
-api.getVotes().then(votes => {
-    console.log(votes)
-})
+api.getVotes()
+  .then(votes => {
+    console.log(votes);
+  })
+  .catch(error => {
+    console.error('Error:', error.message);
+  });
 
-// Or, if running inside an async function:
-
-await api.getVotes()
+// Or, using async/await:
+try {
+  const votes = await api.getVotes();
+  console.log(votes);
+} catch (error) {
+  console.error('Error:', error.message);
+}
 ```
+
 
 ### Checking a vote for one specific user (including structure)
 ```js
-api.checkVote("254287885585350666").then(vote => { //Provide a user id
-    console.log(vote) //true or false + vote structure
-})
+api.checkVote("254287885585350666")
+  .then(vote => {
+    console.log(vote); // { voted: true/false, votes: [...] }
+  })
+  .catch(error => {
+    console.error('Error:', error.message);
+  });
 ```
 
-### Checking a vote for one specific user (lightweight structure)
+
+### Checking a vote for one specific user (lightweight)
 ```js
-api.checkVoteLight("254287885585350666").then(vote => { //Provide a user id
-    console.log(vote) //true or false
-})
+api.checkVoteLight("254287885585350666")
+  .then(hasVoted => {
+    console.log(hasVoted); // true or false
+  })
+  .catch(error => {
+    console.error('Error:', error.message);
+  });
 ```
 
 
+### Update server count
+```js
+const serverCount = client.guilds.cache.size;
+api.setServers(serverCount)
+  .then(response => {
+    console.log('Server count updated:', response);
+  })
+  .catch(error => {
+    console.error('Error updating server count:', error.message);
+  });
+```
+
+
+## Error Handling
+
+
+All methods can throw errors, so it's recommended to use try-catch blocks or .catch() when using these methods.
+
+## Note on API Responses
+
+The structure of the API responses may vary. Always check the returned data to ensure it matches your expectations.
